@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Admin\CategoryController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NewsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,22 +19,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/hello/{name}', function(string $name) {
-    return "Hello, $name";
-});
-
-Route::get('/about', function() {
-    return "This is news feed project";
-});
-
-Route::get('/news', function() {
-    return "NEWS FEED";
-});
-
-Route::get('/news/{id}', function(int $id) {
-    return "Article with id $id";
-});
-
-Route::get('/debug', function() {
+Route::get('/debug', function () {
     return phpinfo();
 });
+
+Route::get('/about', function () {
+    return view('about');
+});
+
+Route::resource('category', CategoryController::class);
+
+Route::get('/news', [NewsController::class, 'index'])
+    ->name('news.index');
+
+Route::get('/news/{id}', [NewsController::class, 'show'])
+    ->where('id', '\d+')
+    ->name('news.show');
+
+Route::get('/categories', [NewsController::class, 'categories'])
+    ->name('news.categories');
+
+Route::get('/news/{category}', [NewsController::class, 'filtered'])
+    ->name('news.filtered');
