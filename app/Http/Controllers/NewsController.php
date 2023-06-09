@@ -24,7 +24,8 @@ class NewsController extends Controller
     public function filtered(string $category)
     {
         return view('news/filtered', [
-            'filteredNewsList' => $this->getNewsByCategory($category)
+            'filteredNewsList' => $this->getNewsByCategory($category),
+            'category' => $category
         ]);
     }
 

@@ -1,8 +1,10 @@
 <?php
 
-use App\Http\Controllers\Admin\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\Admin\NewsController as AdminNewsController;
+use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
+use App\Http\Controllers\Admin\IndexController as AdminIndexController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,19 +17,26 @@ use App\Http\Controllers\NewsController;
 |
 */
 
+
+//ADMIN ROUTES
+Route::group(['prefix' => 'admin', 'as' => 'admin.'], static function () {
+    Route::get('/', AdminIndexController::class)->name('index');
+    Route::resource('/news', AdminNewsController::class);
+    Route::resource('/categories', AdminCategoryController::class);
+    Route::get('/debug', function () {
+        return phpinfo();
+    });
+});
+
+
+//GUEST ROUTES
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/debug', function () {
-    return phpinfo();
-});
-
 Route::get('/about', function () {
     return view('about');
-});
-
-Route::resource('category', CategoryController::class);
+})->name('about');
 
 Route::get('/news', [NewsController::class, 'index'])
     ->name('news.index');
