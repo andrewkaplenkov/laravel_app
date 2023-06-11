@@ -1,27 +1,26 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 
-class NewsController extends Controller
+class OrderController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index(): View
     {
-        return view('admin/news/index');
+        return view('news/order');
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create(): View
+    public function create()
     {
-        return view('admin/news/create');
+        //
     }
 
     /**
@@ -29,10 +28,7 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request->json($request->all());
-        return response()->json($request->only(['title', 'author', 'body']));
-
-        // dd($request->all());
+        return response()->json($request->only(['name', 'phone', 'email']));
     }
 
     /**

@@ -8,6 +8,9 @@
         <a href="{{route('news.categories')}}" class="navbar-brand d-flex align-items-center">
           <strong>Categories</strong>
         </a>
+        <a href="{{route('order')}}" class="navbar-brand d-flex align-items-center">
+          <strong>Order</strong>
+        </a>
         <a href="{{route('about')}}" class="navbar-brand d-flex align-items-center">
           <strong>About</strong>
         </a>
