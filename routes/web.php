@@ -5,6 +5,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\IndexController as AdminIndexController;
+use App\Http\Controllers\OrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,7 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.'], static function () {
 });
 
 
+
 //GUEST ROUTES
 Route::get('/', function () {
     return view('welcome');
@@ -50,3 +52,7 @@ Route::get('/categories', [NewsController::class, 'categories'])
 
 Route::get('/news/{category}', [NewsController::class, 'filtered'])
     ->name('news.filtered');
+
+
+Route::get('/order', [OrderController::class, 'index'])->name('order');
+Route::post('/order', [OrderController::class, 'store'])->name('order.store');
