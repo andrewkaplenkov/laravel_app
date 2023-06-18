@@ -5,6 +5,7 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
 use App\Http\Controllers\Admin\IndexController as AdminIndexController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\OrderController;
 
 /*
@@ -47,10 +48,10 @@ Route::get('/news/{id}', [NewsController::class, 'show'])
     ->where('id', '\d+')
     ->name('news.show');
 
-Route::get('/categories', [NewsController::class, 'categories'])
+Route::get('/categories', [CategoryController::class, 'index'])
     ->name('news.categories');
 
-Route::get('/news/{category}', [NewsController::class, 'filtered'])
+Route::get('/news/{category}', [CategoryController::class, 'show'])
     ->name('news.filtered');
 
 

@@ -3,32 +3,28 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Models\News;
-use Illuminate\Contracts\View\View;
+use App\Models\Source;
 use Illuminate\Http\Request;
 
-class NewsController extends Controller
+class SourceController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(): View
+    public function index()
     {
 
-        $model = app(News::class);
+        $model = app(Source::class);
 
-        // dd($model->getNews(true));
-
-        return view('admin/news/index', ['newsList' => $model->getNews()]);
+        dd($model->getSources());
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create(): View
+    public function create()
     {
-
-        return view('admin/news/create');
+        //
     }
 
     /**
@@ -36,10 +32,7 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
-        // return $request->json($request->all());
-        return response()->json($request->only(['title', 'author', 'body']));
-
-        // dd($request->all());
+        //
     }
 
     /**
