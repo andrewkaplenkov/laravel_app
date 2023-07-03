@@ -14,9 +14,4 @@ class Source extends Model
     protected $fillable = [
         'title', 'url'
     ];
-
-    public function news(): HasMany
-    {
-        return $this->hasMany(News::class);
-    }
 }

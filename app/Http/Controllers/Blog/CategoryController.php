@@ -14,6 +14,6 @@ class CategoryController extends Controller
      */
     public function index(CategoriesQueryBuilder $builder)
     {
-        return $builder->getAll();
+        return view('blog.categories.index', ['categories' => $builder->getAll()]);
     }
 }

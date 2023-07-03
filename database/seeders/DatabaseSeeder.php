@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -18,5 +19,20 @@ class DatabaseSeeder extends Seeder
         //     'name' => 'Test User',
         //     'email' => 'test@example.com',
         // ]);
+
+        // $this->call([
+        //     UserSeeder::class,
+        //     CategorySeeder::class,
+        //     SourceSeeder::class,
+        //     NewsSeeder::class
+        // ]);
+
+        // for ($i = 1; $i <= 10; $i++) {
+
+        //     DB::table('category_has_news')->insert([
+        //         'category_id' => rand(1, 6),
+        //         'news_id' => $i
+        //     ]);
+        // }
     }
 }

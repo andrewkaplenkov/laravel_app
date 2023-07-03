@@ -17,7 +17,7 @@ class NewsSeeder extends Seeder
     {
         $data = [];
 
-        for ($i = 0; $i < 15; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             $data[] = [
                 'created_at' => now(),
                 'updated_at' => now(),

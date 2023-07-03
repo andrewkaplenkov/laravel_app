@@ -15,6 +15,6 @@ class SourcesQueryBuilder extends QueryBuilder
 
     public function getAll(): Collection
     {
-        return $this->getModel()->with('news')->get();
+        return $this->getModel()->get();
     }
 }

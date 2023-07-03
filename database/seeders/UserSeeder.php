@@ -14,9 +14,17 @@ class UserSeeder extends Seeder
 
     public function getData(): array
     {
-        $data = [];
+        $data = [
+            [
+                'created_at' => now(),
+                'updated_at' => now(),
+                'name' => 'admin',
+                'email' => 'admin@mail.com',
+                'password' => 'admin'
+            ]
+        ];
 
-        for ($i = 0; $i < 20; $i++) {
+        for ($i = 0; $i < 10; $i++) {
             $data[] = [
                 'created_at' => now(),
                 'updated_at' => now(),

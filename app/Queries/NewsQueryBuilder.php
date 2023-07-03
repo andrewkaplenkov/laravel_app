@@ -18,7 +18,6 @@ class NewsQueryBuilder extends QueryBuilder
         return $this->getModel()
             ->with('categories')
             ->with('user')
-            ->with('source')
             ->get();
     }
 }

@@ -20,7 +20,7 @@ class SourceSeeder extends Seeder
             $data[] = [
                 'created_at' => now(),
                 'updated_at' => now(),
-                'title' => fake()->jobTitle(),
+                'name' => fake()->company(),
                 'url' => fake()->url()
             ];
         }

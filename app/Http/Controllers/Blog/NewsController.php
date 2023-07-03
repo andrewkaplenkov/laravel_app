@@ -12,16 +12,27 @@ class NewsController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index(NewsQueryBuilder $builder)
-    {
-        return $builder->getAll();
+
+    public function __construct(
+        private NewsQueryBuilder $builder
+    ) {
     }
+
+    public function index()
+    {
+        $news = $this->builder->getAll();
+
+        return view('blog.news.index', [
+            'news' => $news,
+        ]);
+    }
+
 
     /**
      * Display the specified resource.
      */
     public function show(News $news)
     {
-        return $news;
+        return view('blog.news.show', ['news' => $news]);
     }
 }

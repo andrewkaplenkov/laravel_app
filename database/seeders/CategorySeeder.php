@@ -37,20 +37,6 @@ class CategorySeeder extends Seeder
         return $data;
     }
 
-    // public function getData(): array
-    // {
-    //     $data = [];
-
-    //     for ($i = 0; $i < 21; $i++) {
-    //         $data[] = [
-    //             'category_id' => array_rand($this->categories),
-    //             'news_id' => rand(1, 21)
-    //         ];
-    //     }
-
-    //     return $data;
-    // }
-
     public function run(): void
     {
         DB::table('categories')->insert($this->getData());
