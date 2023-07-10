@@ -4,7 +4,6 @@ use App\Http\Controllers\Blog\CategoryController;
 use App\Http\Controllers\Blog\NewsController;
 use App\Http\Controllers\Admin\NewsController as AdminNewsController;
 use App\Http\Controllers\Admin\CategoryController as AdminCategoryController;
-use App\Http\Controllers\Admin\MainController as AdminMainController;
 use App\Http\Controllers\Admin\SourceController as AdminSourceController;
 use App\Http\Controllers\Admin\FeedbackController as AdminFeedbackController;
 use App\Http\Controllers\Admin\OrderController as AdminOrderController;
@@ -23,11 +22,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::redirect('/', '/blog/news');
+Route::redirect('/', '/blog/news', 302);
 
 Route::prefix('admin')->as('admin.')->group(function () {
-
-    Route::get('/', AdminMainController::class)->name('index');
 
     Route::resource('/news', AdminNewsController::class);
     Route::resource('/categories', AdminCategoryController::class);
@@ -42,7 +39,7 @@ Route::prefix('blog')->group(function () {
 
     Route::get('/categories', [CategoryController::class, 'index'])->name('categories');
 
-    Route::resource('/feedback', FeedbackController::class)->only(['index', 'store']);
+    Route::resource('/feedback', FeedbackController::class)->only(['create', 'store']);
 
-    Route::resource('/order', OrderController::class)->only(['index', 'store']);
+    Route::resource('/order', OrderController::class)->only(['create', 'store']);
 });

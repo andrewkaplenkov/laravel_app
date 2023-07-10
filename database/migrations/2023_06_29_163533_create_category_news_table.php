@@ -11,16 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('category_has_news', function (Blueprint $table) {
+        Schema::create('category_news', function (Blueprint $table) {
             $table->foreignId('category_id')
                 ->references('id')
-                ->on('categories')
-                ->cascadeOnDelete();
+                ->on('categories');
 
             $table->foreignId('news_id')
                 ->references('id')
-                ->on('news')
-                ->cascadeOnDelete();
+                ->on('news');
         });
     }
 
@@ -29,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('category_has_news');
+        Schema::dropIfExists('category_news');
     }
 };

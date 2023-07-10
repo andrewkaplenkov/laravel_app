@@ -42,9 +42,10 @@ Edit  article "{{$news->title}}" @parent
         <div class="form-group">
             <label for="status">Status</label>
             <select class="form-control" name="status" id="status">
-                <option @if($news->status === 'DRAFT') selected @endif>DRAFT</option>
-                <option @if($news->status === 'ACTIVE') selected @endif>ACTIVE</option>
-                <option @if($news->status === 'BLOCKED') selected @endif>BLOCKED</option>
+                <option @if($news->status === 'draft') selected @endif>draft</option>
+                <option @if($news->status === 'published') selected @endif>published</option>
+                <option @if($news->status === 'blocked') selected @endif>blocked</option>
+                <option @if($news->status === 'pending') selected @endif>pending</option>
             </select>
         </div>
 
@@ -54,7 +55,7 @@ Edit  article "{{$news->title}}" @parent
         </div>
 
         <br />
-        <button type="submit" class="btn btn-success">Save</button>
+        <button type="submit" class="btn btn-success">Edit</button>
     </form>
 
 @endsection

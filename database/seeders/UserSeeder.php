@@ -16,21 +16,21 @@ class UserSeeder extends Seeder
     {
         $data = [
             [
-                'created_at' => now(),
-                'updated_at' => now(),
                 'name' => 'admin',
                 'email' => 'admin@mail.com',
-                'password' => 'admin'
+                'password' => 'admin',
+                'created_at' => now(),
+                'updated_at' => now(),
             ]
         ];
 
         for ($i = 0; $i < 10; $i++) {
             $data[] = [
-                'created_at' => now(),
-                'updated_at' => now(),
                 'name' => fake()->name(),
                 'email' => fake()->email(),
-                'password' => fake()->password()
+                'password' => fake()->password(),
+                'created_at' => now(),
+                'updated_at' => now(),
             ];
         }
 

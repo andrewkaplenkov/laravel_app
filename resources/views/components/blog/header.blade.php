@@ -15,10 +15,10 @@
             <a href="{{route('categories')}}" class="navbar-brand d-flex align-items-center">
               {{__('Categories')}}
             </a>
-            <a href="{{route('order.index')}}" class="navbar-brand d-flex align-items-center">
+            <a href="{{route('order.create')}}" class="navbar-brand d-flex align-items-center">
               {{__('Make order')}}
             </a>
-            <a href="{{route('feedback.index')}}" class="navbar-brand d-flex align-items-center">
+            <a href="{{route('feedback.create')}}" class="navbar-brand d-flex align-items-center">
               {{__('Feedback')}}
             </a>
           </div>

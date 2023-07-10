@@ -20,19 +20,19 @@ class DatabaseSeeder extends Seeder
         //     'email' => 'test@example.com',
         // ]);
 
-        // $this->call([
-        //     UserSeeder::class,
-        //     CategorySeeder::class,
-        //     SourceSeeder::class,
-        //     NewsSeeder::class
-        // ]);
+        $this->call([
+            UserSeeder::class,
+            CategorySeeder::class,
+            SourceSeeder::class,
+            NewsSeeder::class
+        ]);
 
-        // for ($i = 1; $i <= 10; $i++) {
+        for ($i = 1; $i <= 18; $i++) {
 
-        //     DB::table('category_has_news')->insert([
-        //         'category_id' => rand(1, 6),
-        //         'news_id' => $i
-        //     ]);
-        // }
+            DB::table('category_news')->insert([
+                'category_id' => rand(1, 6),
+                'news_id' => rand(1, 10)
+            ]);
+        }
     }
 }

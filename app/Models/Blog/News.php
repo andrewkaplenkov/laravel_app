@@ -14,19 +14,19 @@ class News extends Model
 {
     use HasFactory;
 
+    protected $table = 'news';
+
     protected $fillable = [
-        'title', 'body', 'image', 'user_id', 'status'
+        'title', 'body', 'image', 'user_id', 'status', 'published_at'
     ];
 
+    protected $cast = [
+        'published_at' => 'timestamp'
+    ];
 
     public function categories(): BelongsToMany
     {
-        return $this->belongsToMany(
-            Category::class,
-            'category_has_news',
-            'news_id',
-            'category_id'
-        );
+        return $this->belongsToMany(Category::class);
     }
 
     public function user(): BelongsTo
