@@ -17,7 +17,7 @@ class CategorySeeder extends Seeder
         2 => 'Science',
         3 => 'Lifestyle',
         4 => 'Economics',
-        4 => 'Games',
+        5 => 'Games',
         6 => 'Music'
     ];
 
@@ -25,12 +25,12 @@ class CategorySeeder extends Seeder
     {
         $data = [];
 
-        for ($i = 0; $i < 6; $i++) {
+        for ($i = 1; $i <= 6; $i++) {
             $data[] = [
+                'title' => $this->categories[$i],
+                'description' => fake()->text(50),
                 'created_at' => now(),
                 'updated_at' => now(),
-                'title' => $this->categories[array_rand($this->categories, 1)],
-                'description' => fake()->text(50)
             ];
         }
 

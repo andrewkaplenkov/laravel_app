@@ -37,11 +37,11 @@ News @parent
           <td>{{$item->user->name}}</td>
           <td>{{$item->status}}</td>
           <td class="d-flex flex-column">
-            <a href="{{route('admin.news.edit', ['news' => $item->id])}}">Edit</a>
+            <a class="btn btn-primary" href="{{route('admin.news.edit', ['news' => $item->id])}}">Edit</a>
             <form method="POST" action="{{route('admin.news.destroy', ['news' => $item->id])}}">
               @method('delete')
               @csrf
-              <button class="btn btn-primary" type="submit">Delete</button>
+              <input class="btn btn-danger" type="submit" value="Delete" />
             </form>
           </td>
         </tr>

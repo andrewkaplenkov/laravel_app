@@ -18,10 +18,10 @@ class SourceSeeder extends Seeder
 
         for ($i = 0; $i < 5; $i++) {
             $data[] = [
+                'name' => fake()->company(),
+                'url' => fake()->url(),
                 'created_at' => now(),
                 'updated_at' => now(),
-                'name' => fake()->company(),
-                'url' => fake()->url()
             ];
         }
 

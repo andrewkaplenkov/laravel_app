@@ -13,10 +13,16 @@ Feedback @parent
         <div class="form-group">
             <label for="name">Name</label>
             <input type="text" name="name" id="name" class="form-control" value="{{ old('name') }}"/>
+            @error('name')
+            <x-alert type="danger" :message="$message"></x-alert>
+            @enderror
         </div>
         <div class="form-group">
             <label for="message">Message</label>
             <textarea class="form-control" name="message" id="message">{!! old('message') !!}</textarea>
+            @error('message')
+            <x-alert type="danger" :message="$message"></x-alert>
+            @enderror
         </div>
 
         <br />

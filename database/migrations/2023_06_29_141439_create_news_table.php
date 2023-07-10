@@ -14,19 +14,21 @@ return new class extends Migration
     {
         Schema::create('news', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
 
             $table->string('title');
             $table->text('body');
             $table->string('image')->nullable();
 
             $table->foreignId('user_id')
+                ->default(1)
                 ->references('id')
-                ->on('users')
-                ->cascadeOnDelete();
+                ->on('users');
 
-            $table->enum('status', NewsStatuses::all());
+            $table->enum('status', NewsStatuses::all())
+                ->default(NewsStatuses::DRAFT->value);
             $table->timestamp('published_at')->nullable();
+
+            $table->timestamps();
         });
     }
 

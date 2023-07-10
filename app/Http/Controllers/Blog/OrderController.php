@@ -3,30 +3,37 @@
 namespace App\Http\Controllers\Blog;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Order\Store;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
-    public function index()
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
     {
-        return view('blog.order.index');
+        return view('blog.order.create');
     }
 
-    public function store(Request $request)
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Store $request)
     {
-
-        // dd($request->input());
+        $data = $request->validated();
 
         DB::table('orders')->insert([
+            'name' => $data['name'],
+            'phone' => $data['phone'],
+            'email' => $data['email'],
+            'message' => $data['message'],
             'created_at' => now(),
-            'updated_at' => now(),
-            'name' => $request->input('name'),
-            'phone' => $request->input('phone'),
-            'email' => $request->input('email'),
-            'message' => $request->input('message')
+            'updated_at' => now()
         ]);
 
-        return redirect(route('order.index'));
+        return redirect(route('order.create'));
     }
 }

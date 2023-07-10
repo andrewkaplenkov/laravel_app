@@ -19,13 +19,11 @@ class NewsSeeder extends Seeder
 
         for ($i = 0; $i < 10; $i++) {
             $data[] = [
-                'created_at' => now(),
-                'updated_at' => now(),
                 'title' => fake()->jobTitle(),
                 'body' => fake()->text(200),
                 'image' => fake()->url(),
-                'user_id' => 1,
-                'status' => NewsStatuses::all()[array_rand(NewsStatuses::all())]
+                'created_at' => now(),
+                'updated_at' => now(),
             ];
         }
 

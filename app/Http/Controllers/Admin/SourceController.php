@@ -3,17 +3,19 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use App\Queries\SourcesQueryBuilder;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SourceController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index(SourcesQueryBuilder $builder)
+    public function index()
     {
-        return $builder->getAll();
+        return view('admin.sources.index', [
+            'sources' => DB::table('sources')->get()
+        ]);
     }
 
     /**

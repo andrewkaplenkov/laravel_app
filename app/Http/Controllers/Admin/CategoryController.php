@@ -3,19 +3,26 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Category\Store;
+use App\Http\Requests\Category\Update;
 use App\Models\Blog\Category;
-use App\Queries\CategoriesQueryBuilder;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use App\Queries\CategoryQueryBuilder;
 
 class CategoryController extends Controller
 {
+
+    public function __construct(
+        private CategoryQueryBuilder $categoryQueryBuilder
+    ) {
+    }
     /**
      * Display a listing of the resource.
      */
-    public function index(CategoriesQueryBuilder $builder)
+    public function index()
     {
-        return view('admin.categories.index', ['categories' => $builder->getAll()]);
+        return view('admin.categories.index', [
+            'categories' => $this->categoryQueryBuilder->all()
+        ]);
     }
 
     /**
@@ -29,32 +36,32 @@ class CategoryController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Store $request)
     {
-        $categories = $request->only(['title', 'description']);
+        $this->categoryQueryBuilder->create($request);
 
-        Category::create($categories);
-
-        return redirect()->route('admin.categories.index')->with('success', 'Category has been create');
+        return redirect(route('admin.categories.index'));
     }
+
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(Category $category)
     {
-        return view('admin.categories.edit', ['category' => $category]);
+        return view('admin.categories.edit', [
+            'category' => $category
+        ]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Category $category)
+    public function update(Update $request, Category $category)
     {
+        $this->categoryQueryBuilder->update($request, $category);
 
-        $category = $category->fill($request->only(['title', 'description']));
-        $category->save();
-        return redirect()->route('admin.categories.index')->with('success', 'News has been update');
+        return redirect(route('admin.categories.index'));
     }
 
     /**
@@ -62,7 +69,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
-        DB::table('categories')->delete($category->id);
+        $this->categoryQueryBuilder->delete($category);
 
         return redirect(route('admin.categories.index'));
     }
